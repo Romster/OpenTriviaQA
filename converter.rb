@@ -21,7 +21,8 @@ require 'json'
 require 'pathname'
 
 def stripAndEncode(str)
-  return str.strip!.force_encoding('ISO-8859-1').encode('UTF-8')
+  # Files are already in UTF-8 format, just strip whitespace
+  return str.strip!
 end
 
 ARGV.each do |file|
@@ -61,4 +62,3 @@ ARGV.each do |file|
 
   File.write("#{file}.json", questions.to_json)
 end
-
